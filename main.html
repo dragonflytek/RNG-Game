@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RNG Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            transition: background-color 1s ease;
+        }
+        #header {
+            text-align: center;
+            width: 100%;
+        }
+        #result {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        #left-container, #right-container {
+            width: 45%;
+        }
+        #left-container {
+            text-align: left;
+            padding-right: 20px;
+        }
+        #right-container {
+            text-align: left;
+            padding-left: 20px;
+        }
+        #log-container {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        #rarities {
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1>RNG Dice Roll Game</h1>
+        <p>Click the button to roll. Each number has a different rarity.</p>
+      <br>
+      <p>Feeling lucky? Click the roll button below</p>
+        <button onclick="rollDice()">Roll</button>
+        <button onclick="autoRoll()">Auto Roll</button>
+    </div>
+
+    <div id="left-container">
+        <div id="log-container">
+            <p><strong>Roll Log:</strong></p>
+            <p><strong>Common:</strong> 0</p>
+            <p><strong>Uncommon:</strong> 0</p>
+            <p><strong>Rare:</strong> 0</p>
+            <p><strong>Epic:</strong> 0</p>
+            <p><strong>Legendary:</strong> 0</p>
+            <p><strong>Mythical:</strong> 0</p>
+            <p><strong>Divine:</strong> 0</p>
+            <p><strong>Transcendent:</strong> 0</p>
+            <p><strong>Celestial:</strong> 0</p>
+            <p><strong>Cosmic:</strong> 0</p>
+            <p><strong>Astral:</strong> 0</p>
+            <p><strong>Ethereal:</strong> 0</p>
+            <p><strong>Omnipotent:</strong> 0</p>
+            <p><strong>Beyond Reality:</strong> 0</p>
+        </div>
+    </div>
+
+    <div id="right-container">
+        <h2>Rarities and Chances:</h2>
+        <p><strong>Common:</strong> 50%</p>
+        <p><strong>Uncommon:</strong> 25%</p>
+        <p><strong>Rare:</strong> 15%</p>
+        <p><strong>Epic:</strong> 10%</p>
+        <p><strong>Legendary:</strong> 7%</p>
+        <p><strong>Mythical:</strong> 5%</p>
+        <p><strong>Divine:</strong> 3%</p>
+        <p><strong>Transcendent:</strong> 1%</p>
+        <p><strong>Celestial:</strong> 0.5%</p>
+        <p><strong>Cosmic:</strong> 0.3%</p>
+        <p><strong>Astral:</strong> 0.1%</p>
+        <p><strong>Ethereal:</strong> 0.05%</p>
+        <p><strong>Omnipotent:</strong> 0.02%</p>
+        <p><strong>Beyond Reality:</strong> 0.001%</p>
+    </div>
+
+    <div id="result">
+        <p><strong>Roll Result:</strong> None</p>
+    </div>
+
+    <script>
+        let rollLog = {
+            "Common": 0,
+            "Uncommon": 0,
+            "Rare": 0,
+            "Epic": 0,
+            "Legendary": 0,
+            "Mythical": 0,
+            "Divine": 0,
+            "Transcendent": 0,
+            "Celestial": 0,
+            "Cosmic": 0,
+            "Astral": 0,
+            "Ethereal": 0,
+            "Omnipotent": 0,
+            "Beyond Reality": 0
+        };
+
+        const rarityColors = {
+            "Common": "gray",
+            "Uncommon": "green",
+            "Rare": "blue",
+            "Epic": "purple",
+            "Legendary": "gold",
+            "Mythical": "pink",
+            "Divine": "red",
+            "Transcendent": "orange",
+            "Celestial": "lightblue",
+            "Cosmic": "darkviolet",
+            "Astral": "darkcyan",
+            "Ethereal": "lightgray",
+            "Omnipotent": "black",
+            "Beyond Reality": "white"
+        };
+
+        function rollDice() {
+            let rand = Math.random();
+            let roll;
+            let rarity = "";
+
+            if (rand < 0.5) {
+                roll = 1;
+                rarity = "Common";
+            } else if (rand < 0.75) {
+                roll = 2;
+                rarity = "Uncommon";
+            } else if (rand < 0.9) {
+                roll = 3;
+                rarity = "Rare";
+            } else if (rand < 1.0) {
+                roll = 4;
+                rarity = "Epic";
+            } else if (rand < 0.97) {
+                roll = 5;
+                rarity = "Legendary";
+            } else if (rand < 0.98) {
+                roll = 6;
+                rarity = "Mythical";
+            } else if (rand < 0.99) {
+                roll = 7;
+                rarity = "Divine";
+            } else if (rand < 0.999) {
+                roll = 8;
+                rarity = "Transcendent";
+            } else if (rand < 0.9995) {
+                roll = 9;
+                rarity = "Celestial";
+            } else if (rand < 0.9998) {
+                roll = 10;
+                rarity = "Cosmic";
+            } else if (rand < 0.9999) {
+                roll = 11;
+                rarity = "Astral";
+            } else if (rand < 0.99995) {
+                roll = 12;
+                rarity = "Ethereal";
+            } else if (rand < 0.99997) {
+                roll = 13;
+                rarity = "Omnipotent";
+            } else {
+                roll = 14;
+                rarity = "Beyond Reality";
+            }
+
+            // Update roll log
+            rollLog[rarity]++;
+            updateLogDisplay();
+
+            // Show roll result
+            document.getElementById("result").innerHTML = `<strong>Roll Result:</strong> You rolled a ${roll} (${rarity})`;
+
+            // Change background color based on rarity
+            document.body.style.backgroundColor = rarityColors[rarity];
+        }
+
+        function autoRoll() {
+            setInterval(rollDice, 1000);
+        }
+
+        function updateLogDisplay() {
+            document.querySelector("#log-container p:nth-child(2)").innerText = `Common: ${rollLog["Common"]}`;
+            document.querySelector("#log-container p:nth-child(3)").innerText = `Uncommon: ${rollLog["Uncommon"]}`;
+            document.querySelector("#log-container p:nth-child(4)").innerText = `Rare: ${rollLog["Rare"]}`;
+            document.querySelector("#log-container p:nth-child(5)").innerText = `Epic: ${rollLog["Epic"]}`;
+            document.querySelector("#log-container p:nth-child(6)").innerText = `Legendary: ${rollLog["Legendary"]}`;
+            document.querySelector("#log-container p:nth-child(7)").innerText = `Mythical: ${rollLog["Mythical"]}`;
+            document.querySelector("#log-container p:nth-child(8)").innerText = `Divine: ${rollLog["Divine"]}`;
+            document.querySelector("#log-container p:nth-child(9)").innerText = `Transcendent: ${rollLog["Transcendent"]}`;
+            document.querySelector("#log-container p:nth-child(10)").innerText = `Celestial: ${rollLog["Celestial"]}`;
+            document.querySelector("#log-container p:nth-child(11)").innerText = `Cosmic: ${rollLog["Cosmic"]}`;
+            document.querySelector("#log-container p:nth-child(12)").innerText = `Astral: ${rollLog["Astral"]}`;
+            document.querySelector("#log-container p:nth-child(13)").innerText = `Ethereal: ${rollLog["Ethereal"]}`;
+            document.querySelector("#log-container p:nth-child(14)").innerText = `Omnipotent: ${rollLog["Omnipotent"]}`;
+            document.querySelector("#log-container p:nth-child(15)").innerText = `Beyond Reality: ${rollLog["Beyond Reality"]}`;
+        }
+    </script>
+</body>
+</html>
